@@ -28,7 +28,7 @@ RUN groupadd -r baron \
 
 RUN apt-get update \
     && apt-get dist-upgrade -y \
-    && apt-get install -y python3 python3-venv
+    && apt-get install -y gcc python3 python3-venv python3-dev
 
 
 USER baron
