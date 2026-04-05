@@ -1,0 +1,36 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: {}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Set image tags
+        run: |
+          if [[ "${GITHUB_REF}" == "refs/heads/master" ]]; then
+            echo "IMAGE_TAGS=ninckblokje/ollama-llm-benchmark:${GITHUB_SHA},ninckblokje/ollama-llm-benchmark:latest" >> $GITHUB_ENV
+          else
+            echo "IMAGE_TAGS=ninckblokje/ollama-llm-benchmark:${GITHUB_SHA}" >> $GITHUB_ENV
+          fi
+
+      - name: Build and push multi-platform image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ env.IMAGE_TAGS }}
