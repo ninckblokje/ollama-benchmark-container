@@ -50,18 +50,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Set image tags
-        run: |
-          if [[ "${GITHUB_REF}" == "refs/heads/master" ]]; then
-            echo "IMAGE_TAGS=ninckblokje/ollama-llm-benchmark:${GITHUB_SHA},ninckblokje/ollama-llm-benchmark:latest" >> $GITHUB_ENV
-          else
-            echo "IMAGE_TAGS=ninckblokje/ollama-llm-benchmark:${GITHUB_SHA}" >> $GITHUB_ENV
-          fi
-
       - name: Build and push multi-platform image
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile.cpu
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ env.IMAGE_TAGS }}
+          tags: ninckblokje/ollama-llm-benchmark:cpu
