@@ -25,4 +25,6 @@
 version: 2.0
 models:
   - model: qwen2:1.5b
+  - model: qwen2.5:7b
+  - model: gemma4:e2b
   - model: llama3.2:3b
