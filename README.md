@@ -4,6 +4,19 @@ Docker container for benchmaring ollama with [LLM:Benchmark](https://llm.aidatat
 
 Available tags for `linux/amd64` and `linux/arm64`:
 - `cpu`: Runs ollama on the CPU
+- `nvidia`: Runs ollama with NVIDIA GPU acceleration (requires NVIDIA Container Runtime)
+
+## Running
+
+**CPU:**
+```bash
+docker run --rm ninckblokje/ollama-llm-benchmark:cpu
+```
+
+**NVIDIA GPU:**
+```bash
+docker run --runtime nvidia --rm ninckblokje/ollama-llm-benchmark:nvidia
+```
 
 ## Prompts
 
