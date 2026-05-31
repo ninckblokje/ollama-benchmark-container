@@ -4,6 +4,19 @@ Docker container for benchmaring ollama with [LLM:Benchmark](https://llm.aidatat
 
 Available tags for `linux/amd64` and `linux/arm64`:
 - `cpu`: Runs ollama on the CPU
+- `nvidia`: Runs ollama with NVIDIA GPU acceleration (requires NVIDIA Container Runtime)
+
+## Running
+
+**CPU:**
+```bash
+docker run --rm ninckblokje/ollama-llm-benchmark:cpu
+```
+
+**NVIDIA GPU:**
+```bash
+docker run --runtime nvidia --rm ninckblokje/ollama-llm-benchmark:nvidia
+```
 
 ## Prompts
 
@@ -21,3 +34,5 @@ Available tags for `linux/amd64` and `linux/arm64`:
 | Raspberry Pi 5 8 GB RAM | cpu | llama3.2:3b | 4.246 | 4.28 | 4.25 | 4.33 | 4.11 | 4.26 |
 | Intel® Core™ i7-8550U × 8 24 GB RAM | cpu | qwen2:1.5b | 16.2 | 15.90 | 17.60 | 15.78 | 15.94 | 15.78 |
 | Intel® Core™ i7-8550U × 8 24 GB RAM | cpu | llama3.2:3b | 7.896 | 8.08 | 8.11 | 7.63 | 7.92 | 7.74 |
+| NVIDIA Orin Nano 8 GB RAM MAXN_SUPER | nvidia | qwen2:1.5b | 45.422 | 45.52 | 40.76 | 46.85 | 47.09 | 46.89 |
+| NVIDIA Orin Nano 8 GB RAM MAXN_SUPER | nvidia | llama3.2:3b | 22.324 | 22.21 | 22.36 | 22.33 | 22.42 | 22.30 |
