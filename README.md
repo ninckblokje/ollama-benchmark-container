@@ -34,3 +34,5 @@ docker run --runtime nvidia --rm ninckblokje/ollama-llm-benchmark:nvidia
 | Raspberry Pi 5 8 GB RAM | cpu | llama3.2:3b | 4.246 | 4.28 | 4.25 | 4.33 | 4.11 | 4.26 |
 | Intel® Core™ i7-8550U × 8 24 GB RAM | cpu | qwen2:1.5b | 16.2 | 15.90 | 17.60 | 15.78 | 15.94 | 15.78 |
 | Intel® Core™ i7-8550U × 8 24 GB RAM | cpu | llama3.2:3b | 7.896 | 8.08 | 8.11 | 7.63 | 7.92 | 7.74 |
+| NVIDIA Orin Nano 8 GB RAM MAXN_SUPER | nvidia | qwen2:1.5b | 45.422 | 45.52 | 40.76 | 46.85 | 47.09 | 46.89 |
+| NVIDIA Orin Nano 8 GB RAM MAXN_SUPER | nvidia | llama3.2:3b | 22.324 | 22.21 | 22.36 | 22.33 | 22.42 | 22.30 |
